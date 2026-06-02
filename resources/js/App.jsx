@@ -12,6 +12,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Orders from './pages/Orders';
 import OrderDetail from './pages/OrderDetail';
+import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import AdminLayout from './pages/admin/AdminLayout';
@@ -44,6 +45,9 @@ const App = () => {
                                 } />
                                 <Route path="/orders/:id" element={
                                     <ProtectedRoute><OrderDetail /></ProtectedRoute>
+                                } />
+                                <Route path="/profile" element={
+                                    <ProtectedRoute><Profile /></ProtectedRoute>
                                 } />
                                 <Route path="/admin" element={
                                     <AdminRoute><AdminLayout /></AdminRoute>

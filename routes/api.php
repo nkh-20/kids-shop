@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\ProductController;
 use App\Http\Controllers\Api\V1\CategoryController;
 use App\Http\Controllers\Api\V1\CartController;
 use App\Http\Controllers\Api\V1\OrderController;
+use App\Http\Controllers\Api\V1\ProfileController;
 use App\Http\Controllers\Api\V1\Admin\DashboardController;
 use App\Http\Controllers\Api\V1\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Api\V1\Admin\OrderController as AdminOrderController;
@@ -48,6 +49,12 @@ Route::prefix('v1')->group(function () {
         Route::post('/', [OrderController::class, 'store']);
         Route::get('/', [OrderController::class, 'index']);
         Route::get('/{id}', [OrderController::class, 'show']);
+    });
+
+    // Profile (auth required)
+    Route::middleware('auth:sanctum')->prefix('profile')->group(function () {
+        Route::put('/', [ProfileController::class, 'updateProfile']);
+        Route::put('/password', [ProfileController::class, 'changePassword']);
     });
 
     // Admin routes
